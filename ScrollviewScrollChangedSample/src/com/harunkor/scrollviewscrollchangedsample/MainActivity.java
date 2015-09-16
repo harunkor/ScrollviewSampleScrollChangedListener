@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
+	 private boolean isChanged=false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,7 +26,11 @@ public class MainActivity extends ActionBarActivity {
 		final ScrollView scr=(ScrollView)findViewById(R.id.myScroll);
 		TextView txt=(TextView) findViewById(R.id.textView1);
 		
+		
+		
 		txt.setMovementMethod(new ScrollingMovementMethod());
+		
+		
 		
 		
 		
@@ -36,13 +42,19 @@ public class MainActivity extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				 int scrollY = scr.getScrollY();			
 			
-			
+			if(!isChanged)
+			{
 				if(scrollY>500)
 				{
+					
 					scr.setBackgroundColor(Color.parseColor("#fab000"));
+					
+					 Toast.makeText(getApplicationContext(), "ScrollY:   "+scrollY, 100).show();
+					 isChanged=true;
 				}
 				
-				 Toast.makeText(getApplicationContext(), "ScrollY:   "+scrollY, 100).show();
+				
+			}
 			}
 		});
 		
